@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rock Paper Scissor | Games</title>
+        <link rel="stylesheet" href="./assets/stylesheets/the-game.css" />
+        <!-- ! Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <section id="rock-paper-scissor" class="rock-paper-scissorr">
+            <!-- * Header -->
+            <nav class="d-flex align-items-center">
+                <div class="flex-shrink-0 ms-3">
+                    <h1 class="back text-uppercase">&lt;</h1>
+                </div>
+                <div class="flex-shrink-0 ms-3">
+                    <img
+                        src="./assets/images/logo.png"
+                        style="width: 77px"
+                        alt="..."
+                    />
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <h1 class="tittle text-uppercase">Rock Paper Scissor</h1>
+                </div>
+            </nav>
+            <!-- * Header End-->
+
+            <!-- * Game Content -->
+            <div class="container d-flex flex-column">
+                <div class="row align-items-center justify-content-center">
+                    <div
+                        class="player-area col-8 col-md-3 d-flex flex-column align-items-center"
+                    >
+                        <h1 class="text-uppercase">Player 1</h1>
+                        <button
+                            id="batu"
+                            class="d-flex align-items-center justify-content-center"
+                        >
+                            <img src="./assets/images/batu.png" alt="" />
+                        </button>
+                        <button
+                            id="kertas"
+                            class="d-flex align-items-center justify-content-center"
+                        >
+                            <img src="./assets/images/kertas.png" alt="" />
+                        </button>
+                        <button
+                            id="gunting"
+                            class="d-flex align-items-center justify-content-center"
+                        >
+                            <img src="./assets/images/gunting.png" alt="" />
+                        </button>
+                    </div>
+                    <div
+                        id="result"
+                        class="text-area col-8 col-md-3 text-center"
+                    >
+                        <p class="hasil vs">VS</p>
+                    </div>
+                    <div
+                        class="com-area col-8 col-md-3 d-flex flex-column align-items-center"
+                    >
+                        <h1 class="text-uppercase">Com</h1>
+                            <button
+                                id="com-batu"
+                                class="d-flex align-items-center justify-content-center"
+                            >
+                                <img src="./assets/images/batu.png" alt="" />
+                            </button>
+                            <button
+                                id="com-kertas"
+                                class="d-flex align-items-center justify-content-center"
+                            >
+                                <img src="./assets/images/kertas.png" alt="" />
+                            </butt>
+                            <button
+                                id="com-gunting"
+                                class="d-flex align-items-center justify-content-center"
+                            >
+                                <img src="./assets/images/gunting.png" alt="" />
+                            </button>
+                        
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col">
+                        <img
+                            id="refresh"
+                            src="./assets/images/refresh.png"
+                            style="width: 77px"
+                            alt=""
+                        />
+                    </div>
+                </div>
+            </div>
+            <!-- * Game Content End-->
+        </section>
+        <script src="./assets/javascripts/the-game.js"></script>
+    </body>
+</html>
