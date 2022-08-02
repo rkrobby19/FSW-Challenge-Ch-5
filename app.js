@@ -3,16 +3,16 @@ const ejs = require("ejs");
 const app = express();
 const PORT = 8000;
 
-app.set("view engine", "ejs");
-app.use(express.static("views"));
+app.set("view engine", "ejs"); // ! using ejs view engine
+app.use(express.static("public")); // ! serving static file
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/views/index.html");
+    res.render("index");
 });
 app.get("/the-game", (req, res) => {
-    res.sendFile(__dirname + "/views/the-game.html");
+    res.render("the-game");
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on localhost:${PORT}`);
 });
