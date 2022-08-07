@@ -25,7 +25,6 @@ app.get("/the-game", (req, res) => {
 });
 
 // ! Login Page
-//     TODO: add logic to read email and pass from user data
 app.get("/login", (req, res) => {
     res.render("login");
 });
@@ -45,21 +44,14 @@ app.get("/login", (req, res) => {
 
 // ? cara dari facil
 app.post("/login", jsonParser, (req, res) => {
-    const ADMIN = "admin@gmail.com";
-    const PASS = "admin1234";
-
-    console.log(req.body);
     let reqUserEmail = req.body.email;
-    console.log(reqUserEmail);
     let reqUserPass = req.body.password;
-    console.log(reqUserPass);
 
     // * read user-data json
     let data = JSON.parse(fs.readFileSync("./data-user.json"));
-    console.log(data);
     let filteredData = [];
 
-    // * loop for catch data
+    // * loop for catch user data
     for (let i = 0; i < data.length; i++) {
         if (data[i].email == reqUserEmail) {
             filteredData.push(data[i]);
@@ -75,8 +67,6 @@ app.post("/login", jsonParser, (req, res) => {
         } else {
             res.status(401).send("wrong email or pass");
         }
-        console.log(filteredData);
-        res.send(filteredData);
     } else {
         res.status(404).send("Data not found");
     }
