@@ -47,15 +47,38 @@ app.get("/login", (req, res) => {
 app.post("/login", jsonParser, (req, res) => {
     const ADMIN = "admin@gmail.com";
     const PASS = "admin1234";
+
     console.log(req.body);
     let reqUserEmail = req.body.email;
     console.log(reqUserEmail);
     let reqUserPass = req.body.password;
     console.log(reqUserPass);
-    if (ADMIN === reqUserEmail && PASS === reqUserPass) {
-        res.render("the-game");
+
+    // * read user-data json
+    let data = JSON.parse(fs.readFileSync("./data-user.json"));
+    console.log(data);
+    let filteredData = [];
+
+    // * loop for catch data
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].email == reqUserEmail) {
+            filteredData.push(data[i]);
+        }
+    }
+
+    if (filteredData.length != 0) {
+        if (
+            filteredData[0].email == reqUserEmail &&
+            filteredData[0].password == reqUserPass
+        ) {
+            res.send("You are authorized");
+        } else {
+            res.status(401).send("wrong email or pass");
+        }
+        console.log(filteredData);
+        res.send(filteredData);
     } else {
-        res.status(401).send("wrong email and pass");
+        res.status(404).send("Data not found");
     }
 });
 

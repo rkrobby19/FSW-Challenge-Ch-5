@@ -16,8 +16,8 @@ const login = async () => {
             password: userPassword,
         }),
     });
-    if (resp.status === 401) {
-        alert("Wrong Password");
+    if (resp.status === 401 || resp.status === 404) {
+        alert("Wrong email or password");
     } else {
         alert("You are authorized");
         window.location.replace("the-game");
