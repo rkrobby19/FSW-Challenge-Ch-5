@@ -1,24 +1,28 @@
 {
-    "name": "Challenge Chapter 5",
-    "version": "1.0.0",
-    "description": "My answer for Binar Academy FSW Challenge Ch 5",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node app.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/rkrobby19/FSW-Challenge-Ch-5.git"
-    },
-    "author": "Robby",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/rkrobby19/FSW-Challenge-Ch-5/issues"
-    },
-    "homepage": "https://github.com/rkrobby19/FSW-Challenge-Ch-5#readme",
-    "dependencies": {
-        "ejs": "^3.1.8",
-        "express": "^4.18.1"
-    }
+  "name": "challenge-chapter-5",
+  "version": "1.0.0",
+  "description": "My answer for Binar Academy FSW Challenge Ch 5",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkrobby19/FSW-Challenge-Ch-5.git"
+  },
+  "author": "Robby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rkrobby19/FSW-Challenge-Ch-5/issues"
+  },
+  "homepage": "https://github.com/rkrobby19/FSW-Challenge-Ch-5#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
