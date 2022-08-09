@@ -1,32 +1,59 @@
+// TODO: edit file html using view engine ejs
+// TODO: clean your code
+// TODO: create sign up page / add user data api
+// TODO: create PUT and DELETE method
+
 const fs = require("fs");
 const express = require("express");
 const ejs = require("ejs");
 const chalk = require("chalk");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
 const jsonParser = bodyParser.json();
 
 const PORT = 8000;
 
-app.set("view engine", "ejs"); // ! using ejs view engine
-app.use(express.static("public")); // ! serving static file
+// ! using ejs view engine
+app.set("view engine", "ejs");
+// ! serving static file
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/index", (req, res) => {
-    res.render("index");
-});
-app.get("/the-game", (req, res) => {
-    res.render("the-game");
-});
 app.get("/", (req, res) => {
     let dataUser = JSON.parse(fs.readFileSync("./data-user.json"));
     res.send(dataUser);
 });
 
+app.get("/index", (req, res) => {
+    res.render("index");
+});
+
+app.get("/the-game", (req, res) => {
+    res.render("the-game");
+});
+
+app.get("/user/:id", (req, res) => {
+    let searchId;
+
+    let dataUser = JSON.parse(fs.readFileSync("./data-user.json"));
+
+    for (let i = 0; i < dataUser.length; i++) {
+        if (dataUser[i].id == req.params.id) {
+            searchId = dataUser[i];
+        }
+    }
+
+    if (searchId != undefined) {
+        res.send(searchId);
+    } else {
+        res.status(404).send("DATA USER NOT FOUND");
+    }
+});
+
 // ! Login Page
-// TODO: create sign up page / add user data api
-// ! user data type
+// ? user data type
 app.get("/login", (req, res) => {
     res.render("login");
 });
@@ -78,16 +105,28 @@ app.post("/login", jsonParser, (req, res) => {
 app.get("/register", (req, res) => {
     res.render("register");
 });
-app.post("/register", jsonParser, (req, res) => {
+// * using POST method action form html
+// app.post("/register", jsonParser, (req, res) => {
+//     console.log(req.body);
+//     let data = JSON.parse(fs.readFileSync("./data-user.json", "utf-8"));
+//     let newId = data[data.length - 1].id + 1;
+//     req.body.id = newId;
+//     data.push(req.body);
+//     fs.writeFileSync("./data-user.json", JSON.stringify(data));
+//     console.log(data);
+//     res.status(201).send(data);
+// });
+
+// ? cara dari facil
+// TODO: edit the res send file data layout
+app.post("/register", (req, res) => {
     console.log(req.body);
     let data = JSON.parse(fs.readFileSync("./data-user.json", "utf-8"));
     let newId = data[data.length - 1].id + 1;
     req.body.id = newId;
     data.push(req.body);
     fs.writeFileSync("./data-user.json", JSON.stringify(data));
-    console.log(data);
-    // TODO: edit the res send file data layout
-    res.status(201).send(data);
+    res.status(201).send(req.body);
 });
 
 app.listen(PORT, () => {

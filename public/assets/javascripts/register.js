@@ -20,13 +20,13 @@ const register = async () => {
         body: JSON.stringify({
             name: regName,
             username: regUsername,
-            email: userEmail,
-            password: userPassword,
+            email: regEmail,
+            password: regPassword,
         }),
     });
-    if (resp.status === 401 || resp.status === 404) {
-        alert("used user");
-    } else {
-        alert("You are authorized");
+    console.log(resp);
+    // ?
+    if (resp.status == 201) {
+        alert("You are registered");
     }
 };
