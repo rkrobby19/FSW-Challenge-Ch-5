@@ -1,6 +1,3 @@
-// TODO: edit file html using view engine ejs
-// TODO: clean your code
-// TODO: create sign up page / add user data api
 // TODO: create PUT and DELETE method
 
 const fs = require("fs");
@@ -8,7 +5,6 @@ const express = require("express");
 const ejs = require("ejs");
 const chalk = require("chalk");
 const bodyParser = require("body-parser");
-const path = require("path"); //?
 const {
     getAllData,
     filteredDataByEmail,
@@ -21,9 +17,9 @@ const jsonParser = bodyParser.json();
 
 const PORT = 8000;
 
-// ! using ejs view engine
+// * using ejs view engine
 app.set("view engine", "ejs");
-// ! serving static file
+// * serving static file
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,17 +29,28 @@ app.get("/", (req, res) => {
 });
 
 app.get("/index", (req, res) => {
-    res.render("index");
+    res.render("index", {
+        title: "Home",
+        css: "./assets/stylesheets/index.css",
+        js: "./assets/javascripts/index.js",
+    });
 });
 
 app.get("/the-game", (req, res) => {
-    res.render("the-game");
+    res.render("the-game", {
+        title: "Rock-Paper-Scissor",
+        css: "./assets/stylesheets/the-game.css",
+        js: "./assets/javascripts/the-game.js",
+    });
 });
 
-// ! Login Page
-// ? user data type
+// * Login Page
 app.get("/login", (req, res) => {
-    res.render("login");
+    res.render("login", {
+        title: "Login",
+        css: "./assets/stylesheets/login.css",
+        js: "./assets/javascripts/login.js",
+    });
 });
 app.post("/login", jsonParser, (req, res) => {
     let reqUserEmail = req.body.email;
@@ -65,9 +72,13 @@ app.post("/login", jsonParser, (req, res) => {
     }
 });
 
-// ! Register
+// * Register
 app.get("/register", (req, res) => {
-    res.render("register");
+    res.render("register", {
+        title: "Register",
+        css: "./assets/stylesheets/login.css",
+        js: "./assets/javascripts/register.js",
+    });
 });
 // TODO: edit the res send file data layout
 app.post("/register", (req, res) => {
