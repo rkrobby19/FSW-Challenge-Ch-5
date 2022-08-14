@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const bodyParser = require("body-parser");
-const {
-    getAllData,
-    filteredDataByEmail,
-    searchDataById,
-    getNewUser,
-} = require("../public/export js/retrieveData");
+const { getAllData } = require("../public/export js/retrieveData");
+
+// * Routes controllers
+const user = require("../controllers/user");
+const register = require("../controllers/register");
+const login = require("../controllers/login");
+const theGame = require("../controllers/the-game");
+const main = require("../controllers/index");
 
 const jsonParser = bodyParser.json();
 
@@ -22,78 +24,21 @@ router.get("/", (req, res) => {
 });
 
 // * Challenge Ch 3
-router.get("/index", (req, res) => {
-    res.render("index", {
-        title: "Home",
-        css: "./assets/stylesheets/index.css",
-        js: "./assets/javascripts/index.js",
-    });
-});
+router.get("/index", main.index);
 
 // * Challenge Ch 4
-router.get("/the-game", (req, res) => {
-    res.render("the-game", {
-        title: "Rock-Paper-Scissor",
-        css: "./assets/stylesheets/the-game.css",
-        js: "./assets/javascripts/the-game.js",
-    });
-});
+router.get("/the-game", theGame.index);
 
 // * Login Page
-router
-    .route("/login")
-    .get((req, res) => {
-        res.render("login", {
-            title: "Login",
-            css: "./assets/stylesheets/login.css",
-            js: "./assets/javascripts/login.js",
-        });
-    })
-    .post(jsonParser, (req, res) => {
-        let reqUserEmail = req.body.email;
-        let reqUserPass = req.body.password;
+router.route("/login").get(login.index).post(jsonParser, login.userLogin);
 
-        let filteredData = filteredDataByEmail(reqUserEmail);
-
-        if (filteredData.length != 0) {
-            if (
-                filteredData[0].email == reqUserEmail &&
-                filteredData[0].password == reqUserPass
-            ) {
-                res.send("You are authorized");
-            } else {
-                res.status(401).send("wrong email or pass");
-            }
-        } else {
-            res.status(404).send("Data not found");
-        }
-    });
-
-// * Register
+// * Register Page
 // TODO: edit the res send file data layout
-router
-    .route("/register")
-    .get((req, res) => {
-        res.render("register", {
-            title: "Register",
-            css: "./assets/stylesheets/login.css",
-            js: "./assets/javascripts/register.js",
-        });
-    })
-    .post((req, res) => {
-        getNewUser(req.body);
-        res.status(201).send(req.body);
-    });
+router.route("/register").get(register.index).post(register.newUser);
 
-// * get user by Id
-router.get("/user/:id", (req, res) => {
-    let searchId = searchDataById(req.params.id);
-
-    if (searchId != undefined) {
-        res.send(searchId);
-    } else {
-        res.status(404).send("DATA USER NOT FOUND");
-    }
-});
+// * Search user by Name / Username
+router.get("/user/search", user.getUserByName);
+// * Get user by Id
+router.get("/user/:id", user.getUserById);
 
 module.exports = router;

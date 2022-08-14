@@ -5,9 +5,9 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 const routes = require("./routes/index");
+const requestTime = require("./middleware/request");
 
 const app = express();
-// const jsonParser = bodyParser.json();
 
 const PORT = 8000;
 
@@ -16,7 +16,11 @@ app.set("view engine", "ejs");
 
 // * Serving static file
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// * Middleware
+app.use(requestTime);
 
 // * Route Handler
 app.use(routes);
