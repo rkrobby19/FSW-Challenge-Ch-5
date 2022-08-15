@@ -34,6 +34,7 @@ const searchDataByName = (username) => {
             data[i].name.toLowerCase().includes(username) ||
             data[i].username.toLowerCase().includes(username)
         ) {
+            data[i].password = "******";
             filteredData.push(data[i]);
         }
     }
@@ -47,6 +48,7 @@ const getDataById = (params) => {
 
     for (let i = 0; i < data.length; i++) {
         if (data[i].id == params) {
+            data[i].password = "******";
             searchData = data[i];
         }
     }
