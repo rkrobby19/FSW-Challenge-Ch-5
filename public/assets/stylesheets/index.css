@@ -90,6 +90,10 @@ nav .logo {
     background-color: #ffb548;
     padding: 15px 70px;
 }
+.main-cta .text-area button a {
+    text-decoration: none;
+    color: white;
+}
 /* * footer */
 .main-cta footer {
     position: absolute;

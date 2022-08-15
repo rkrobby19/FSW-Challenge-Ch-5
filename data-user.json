@@ -1,1 +1,30 @@
-[{"id":1,"name":"Admin","username":"Admin","email":"admin@gmail.com","password":"admin1234"},{"name":"Robby","username":"Robby","email":"robby123@gmail.com","password":"robby123","id":2},{"name":"Rizky","username":"Rizky","email":"rizky123@gmail.com","password":"rizky1234","id":3},{"name":"Kurnia","username":"kurnia123","email":"kurnia123@gmail.com","password":"kurnia1234","id":4},{"name":"Jibran","username":"jibran10","email":"jibran10@gmail.com","password":"jibran1234","id":5},{"name":"Kevin","username":"Kevin","email":"kevin25@gmail.com","password":"kevin25","id":6},{"name":"Asal","username":"Asal123","email":"asal20@gmail.com","password":"asal20","id":7},{"name":"asdf","username":"asdf","email":"asdf@gmail.com","password":"asdf","id":8},{"name":"asdf","username":"asdf","email":"asdf@gmail.com","password":"asdf","id":9},{"name":"asdf","username":"asdf","email":"asdf@gmail.com","password":"asdf","id":10},{"name":"asdf","username":"asdf","email":"asdf@gmail.com","password":"asdf","id":11},{"name":"asdf","username":"asdf","email":"asdf@gmail.com","password":"asdf","id":12},{"name":"asdf","username":"asdf","email":"asdf@gmail.com","password":"asdf","id":13},{"name":"asdf","username":"asdf","email":"asdf@gmail.com","password":"asdf","id":14},{"name":"asdf","username":"rwer","email":"asdf@gmail.com","password":"asdfsadf","id":15},{"name":"andi","username":"braga","email":"braga@gmail.com","password":"braga123","id":16}]
+[
+    {
+        "id": 1,
+        "name": "Admin",
+        "username": "Admin",
+        "email": "admin@gmail.com",
+        "password": "admin1234"
+    },
+    {
+        "name": "Robby",
+        "username": "Robby",
+        "email": "robby123@gmail.com",
+        "password": "robby123",
+        "id": 2
+    },
+    {
+        "name": "Rizky",
+        "username": "Rizky",
+        "email": "rizky123@gmail.com",
+        "password": "rizky1234",
+        "id": 3
+    },
+    {
+        "name": "Kurnia",
+        "username": "kurnia123",
+        "email": "kurnia123@gmail.com",
+        "password": "kurnia1234",
+        "id": 4
+    }
+]
