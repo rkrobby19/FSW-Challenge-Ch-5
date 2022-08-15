@@ -25,12 +25,30 @@ const getNewUser = (params) => {
     fs.writeFileSync("./data-user.json", JSON.stringify(data));
 };
 
-const searchDataById = (params) => {
+const searchDataByName = (username) => {
+    let data = getAllData("data-user.json");
+    let filteredData = [];
+
+    for (let i = 0; i < data.length; i++) {
+        if (
+            data[i].name.toLowerCase().includes(username) ||
+            data[i].username.toLowerCase().includes(username)
+        ) {
+            data[i].password = "******";
+            filteredData.push(data[i]);
+        }
+    }
+
+    return filteredData;
+};
+
+const getDataById = (params) => {
     let searchData;
     let data = getAllData("data-user.json");
 
     for (let i = 0; i < data.length; i++) {
         if (data[i].id == params) {
+            data[i].password = "******";
             searchData = data[i];
         }
     }
@@ -42,5 +60,6 @@ module.exports = {
     getAllData,
     filteredDataByEmail,
     getNewUser,
-    searchDataById,
+    getDataById,
+    searchDataByName,
 };
